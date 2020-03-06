@@ -82,15 +82,21 @@
 
             var ChangeImage = function () {
                 var selectedSrc = $(".thumb:eq(" + imgIndex + ")").attr("src");
-            };
 
-            $(".main").fadeOut("normal", function () {
-                $(".main")
+
+                $(".main").fadeOut("normal", function () {
+                    $(".main").attr("src", selectedSrc);
+                    $("main").fadeIn();
+                });
+
+                imgIndex++;
+
+                if (imgIndex == $(".thumb").length) {
+                    clearInterval(timerId)
+                }
+
             });
-
-        });
-
-
+     });
 
 
     </script>
@@ -109,6 +115,7 @@
     <br>
     <input type="text" value="0.5" id="text_fade">
     <input type="button" value="フェード開始" id="button_fade">
+    <input type="button" value="スライドしょー開始" id="slideShow">
     <hr>
     <img class="thumb" src="image/butterfly-4848445__340.jpg" width="90" height="90">
     <img class="thumb" src="image/crocus-4851641__340.jpg" width="90" height="90">
